@@ -1,0 +1,15 @@
+
+#<src>                                              <mnt_point>   <type>      <mnt_flags and options>    <fs_mgr_flags>
+system			/system       f2fs        ro,barrier=1,discard				wait,logical
+system			/system       ext4        ro,barrier=1,discard				wait,logical
+system			/system       erofs       ro								wait,logical
+vendor			/vendor       f2fs        ro,barrier=1,discard				wait,logical
+product			/product      f2fs        ro,barrier=1,discard				wait,logical
+odm				/odm          f2fs        ro,barrier=1,discard				wait,logical
+
+/dev/block/by-name/md_udc					/metadata	ext4	noatime,nosuid,nodev,discard,sync                    wait,formattable
+/dev/block/by-name/userdata				    /data        f2fs    noatime,nosuid,nodev,reserve_root=32768,resgid=5678,inlinecrypt	wait,check,fileencryption=aes-256-xts:aes-256-cts:v2,keydirectory=/metadata/vold/metadata_encryption
+/dev/block/by-name/misc						/misc       emmc        defaults                  defaults
+
+/devices/platform/externdevice* auto auto defaults voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/mt_usb* auto vfat defaults voldmanaged=usbotg:auto,encryptable=userdata
