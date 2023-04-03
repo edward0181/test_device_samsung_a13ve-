@@ -22,5 +22,10 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
-    fastbootd \
-	android.hardware.keymaster@4.0-service.samsung
+    fastbootd 
+
+# Health
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service

@@ -1,0 +1,13 @@
+service dsmsd /system/bin/dsms
+	class core
+	user root
+	group root
+    seclabel u:r:recovery:s0
+	disabled
+	oneshot
+
+on boot
+	start dsmsd
+
+on property:security.dsmsd.enable=false
+	stop dsmsd
